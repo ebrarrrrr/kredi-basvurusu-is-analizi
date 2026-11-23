@@ -2,6 +2,8 @@
 
 Bir bankanın mobil uygulamasındaki ihtiyaç kredisi başvuru sürecini uçtan uca analiz edip yeniden tasarladığım 8 haftalık bireysel iş analizi projesi.
 
+**Portföy sayfası:** https://ebrarrrrr.github.io/kredi-basvurusu-is-analizi/
+
 > Banka kurgusaldır ("Örnek Banka"). Kullanıcı araştırması herkese açık şikayet ve uygulama yorumlarıyla yapıldı; sayısal analizdeki veri **sentetiktir**. Gerçek bir bankanın verisi kullanılmadı.
 
 ## Kısaca
