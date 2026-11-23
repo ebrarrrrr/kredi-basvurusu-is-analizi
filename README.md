@@ -72,4 +72,4 @@ docs/                portföy sayfası (GitHub Pages)
 
 ## İletişim
 
-Ebrar Topal · [LinkedIn](https://www.linkedin.com/in/KULLANICI-ADINIZ)
+Ebrar Topal · [LinkedIn](https://www.linkedin.com/in/ebrar-topal-b710622a8)
