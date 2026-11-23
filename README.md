@@ -15,6 +15,10 @@ Bir bankanın mobil uygulamasındaki ihtiyaç kredisi başvuru sürecini uçtan 
 | **Çözüm** | Önceden doldurulmuş form, açık rızayla dijital gelir bilgisi, SLA'lı manuel inceleme kuyruğu, aktarım hatasında otomatik yeniden deneme, genel red nedeni. |
 | **Hedef** | Uçtan uca dönüşüm %42,7 → %52, manuel inceleme 29 saat → 4 iş saati. |
 
+## Power BI dashboard'u
+
+![Power BI dashboard](04-veri-analizi/dashboard.png)
+
 ## Süreç ve yöntem
 
 | Hafta | Ne yaptım | Çıktı |
