@@ -7,4 +7,5 @@ Bu klasöre şu dosyaları ekleyin:
 
 - `wireframeler.pdf` (Claude'daki tasarım sayfasından PDF olarak dışa aktarın)
 - `sunum.pdf` (Claude'daki sunumdan PDF olarak indirin)
-- `jira-backlog.png` (Jira backlog ve Sprint 1 ekran görüntüsü)
+
+Jira ekran görüntüleri: `jira-sprint1.jpg`, `jira-user-story.jpg`.

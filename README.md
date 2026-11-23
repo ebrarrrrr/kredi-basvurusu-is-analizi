@@ -31,6 +31,12 @@ Bir bankanın mobil uygulamasındaki ihtiyaç kredisi başvuru sürecini uçtan 
 | 6 | 14 FR + 6 NFR'lik BRD, izlenebilirlik, Jira'da 20 user story ve Sprint 1 | [BRD](05-gereksinimler/BRD.md), [user story'ler](05-gereksinimler/jira_user_stories.csv) |
 | 7-8 | 7 ekran wireframe, 10 slaytlık sunum, portföy sayfası | [Tasarım ve sunum](06-tasarim-ve-sunum/) |
 
+## Jira
+
+| Sprint 1 | Örnek user story (DKB-15) |
+| --- | --- |
+| ![Jira Sprint 1](06-tasarim-ve-sunum/jira-sprint1.jpg) | ![Jira user story](06-tasarim-ve-sunum/jira-user-story.jpg) |
+
 ## Darboğazlar ve çözümler
 
 | Kod | Darboğaz | Kanıt | Gereksinim |
