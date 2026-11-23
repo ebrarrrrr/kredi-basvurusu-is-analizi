@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kredi Başvurusu Vaka Çalışması</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: an analyst's case study, read by recruiters in a minute
+   IDEA an audit report: the finding and its evidence first, method after
+   PICTURE the application funnel drawn large, the loss after approval marked
+   COLOUR white ground, ink #101418, slate rules, one warm yellow slab behind the key figure
+   TYPE Manrope 800 for titles and figures, Manrope for text
+   LAYOUT funnel at the top across the full width, finding and figures beside it on a laptop; stacked on a phone */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#101418);--ink:light-dark(#101418,#eef1f4);--soft:light-dark(#4b5563,#a9b2bd);--rule:light-dark(#dde2e8,#2a323c);--panel:light-dark(#f4f6f8,#171d24);--bar:light-dark(#9aa7b6,#5b6b7d);--hot:light-dark(#101418,#ffd84a);--slab:#ffd84a;--slabink:#101418}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,Arial,sans-serif;overflow-x:clip}
+a{color:inherit;text-underline-offset:3px}
+.band{padding-block:clamp(28px,4vw,56px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+.wrap{max-width:1180px;margin:0 auto}
+header.band{border-bottom:1px solid var(--rule);padding-block:20px}
+.who{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:14px;color:var(--soft)}
+.who b{color:var(--ink);font-weight:700}
+h1{font-size:clamp(30px,4.2vw,48px);line-height:1.08;letter-spacing:-.02em;font-weight:800;margin:0 0 12px;text-wrap:balance;max-width:22ch}
+h2{font-size:clamp(24px,2.6vw,30px);line-height:1.15;letter-spacing:-.01em;font-weight:800;margin:0 0 16px;text-wrap:balance}
+p{margin:0 0 12px;max-width:68ch}
+.lede{font-size:18px;color:var(--soft);max-width:60ch}
+.top{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start;margin-top:28px}
+.funnel{display:grid;gap:8px}
+.frow{display:grid;grid-template-columns:minmax(9em,13em) minmax(0,1fr) 7.5em;align-items:center;gap:12px;font-size:15px}
+.ftrack{height:30px}
+.fbar{height:30px;background:var(--bar);border-radius:3px}
+.fbar.hot{background:var(--hot)}
+.fval{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.note{font-size:13px;color:var(--soft);margin-top:12px}
+.key{background:var(--slab);color:var(--slabink);padding:24px;border-radius:6px}
+.key .big{font-size:clamp(44px,6vw,64px);font-weight:800;line-height:1;letter-spacing:-.02em}
+.key p{max-width:none;margin:8px 0 0}
+.figs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin-top:16px}
+.figs div{background:var(--bg);padding:16px}
+.figs b{display:block;font-size:26px;font-weight:800;white-space:nowrap}
+.figs span{font-size:14px;color:var(--soft)}
+nav.scroll{display:flex;gap:20px;overflow-x:auto;padding-block:14px;border-block:1px solid var(--rule);font-size:14px;font-weight:500}
+nav.scroll a{flex:none;text-decoration:none;color:var(--soft)}
+nav.scroll a:hover{color:var(--ink);text-decoration:underline}
+@media(min-width:900px){nav.scroll{position:sticky;top:0;background:var(--bg);z-index:2}}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px)}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:8px}
+.step{border-top:3px solid var(--ink);padding-top:12px}
+.step b{display:block;font-size:17px;margin-bottom:4px}
+.step span{font-size:15px;color:var(--soft)}
+.crow{display:grid;grid-template-columns:minmax(10em,17em) minmax(0,1fr) 2.5em;gap:12px;align-items:center;font-size:15px;padding:5px 0}
+.cbar{height:18px;background:var(--bar);border-radius:2px}
+.cbar.hot{background:var(--hot)}
+.cval{text-align:right;font-variant-numeric:tabular-nums}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:10px 12px 10px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-size:13px;color:var(--soft);font-weight:700}
+td.n,th.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.lessons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.lessons div{background:var(--panel);padding:20px;border-radius:6px}
+.lessons b{display:block;font-size:17px;margin-bottom:6px}
+.out{display:grid;grid-template-columns:repeat(auto-fit,minmax(15em,1fr));gap:12px}
+.out div{border:1px solid var(--rule);border-radius:6px;padding:16px}
+.out b{display:block}
+.out span{font-size:14px;color:var(--soft)}
+footer.band{border-top:1px solid var(--rule);font-size:14px;color:var(--soft)}
+@media(max-width:900px){.top,.two{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.lessons{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){table{font-size:13px}th,td{padding:6px 4px}.frow{grid-template-columns:minmax(0,1fr) 6.5em;row-gap:2px}.frow .ftrack{grid-column:1/-1;grid-row:2}.crow{grid-template-columns:minmax(0,1fr) 2.5em;row-gap:2px}.crow .ctrack{grid-column:1/-1;grid-row:2}.steps{grid-template-columns:minmax(0,1fr)}.figs b{font-size:22px}}
+@media(prefers-reduced-motion:no-preference){.fbar,.cbar{animation:grow .7s ease-out both}@keyframes grow{from{transform:scaleX(0);transform-origin:left}to{transform:scaleX(1);transform-origin:left}}}
+</style>
+</head>
+<body>
+<header class="band"><div class="wrap who"><span><b>Ebrar Topal</b> · İş analizi portföyü</span><span>Kişisel proje · Eylül–Kasım 2026 · 8 hafta</span></div></header>
+
+<main>
+<section class="band"><div class="wrap">
+<h1>Mobil kredi başvurusunda müşteri onaydan sonra da kayboluyor</h1>
+<p class="lede">Bir bankanın mobil ihtiyaç kredisi sürecini araştırma, BPMN, SQL ve gereksinim analiziyle inceledim. Kaybın yarısı formda; ama şikayetlerin çoğu kredi onaylandıktan sonra para hesaba geçmediğinde geliyor.</p>
+<div class="top">
+<div>
+<div class="funnel" id="funnel" role="img" aria-label="Başvuru hunisi: 8.000 başlayan başvurudan 3.386'sı kullandırılan krediye dönüşüyor"></div>
+<p class="note">Başvuru hunisi, iki kanal birlikte. Kurgusal “Örnek Banka”, Mayıs–Ekim 2026 dönemi için üretilmiş 8.000 sentetik başvuru.</p>
+</div>
+<div>
+<div class="key"><div class="big">%42</div><p><b>Başlayan başvurudan kullandırılan krediye dönüşüm.</b> Onay oranı tek başına bunu gizliyor: onaylanan kredilerin %3,6'sı iptal ediliyor ya da gecikiyor.</p></div>
+<div class="figs">
+<div><b>44</b><span>gerçek şikayet ve yorum, 11 banka</span></div>
+<div><b>6</b><span>darboğaz (D1–D6)</span></div>
+<div><b>14</b><span>fonksiyonel gereksinim</span></div>
+<div><b>20</b><span>user story, Jira'da</span></div>
+</div>
+</div>
+</div>
+</div></section>
+
+<nav class="scroll band" style="padding-block:14px" aria-label="Bölümler"><a href="#yontem">Yöntem</a><a href="#arastirma">Araştırma</a><a href="#surec">Süreç</a><a href="#veri">Veri</a><a href="#cozum">Çözüm</a><a href="#etki">Etki</a><a href="#ogrenim">Öğrendiklerim</a><a href="#ciktilar">Çıktılar</a></nav>
+
+<section class="band" id="yontem"><div class="wrap">
+<h2>Gerçek banka verisi olmadan dört adımda</h2>
+<p>Bankaya ve çalışanlarına erişimim yoktu. Kullanıcı sorunlarını herkese açık şikayetlerden çıkardım, analizi bu bulgulara dayanan sentetik veriyle yaptım ve her varsayımı açıkça yazdım.</p>
+<div class="steps">
+<div class="step"><b>Masa başı araştırması</b><span>Şikayetvar ve Google Play'den 44 kayıt; etiketleme, persona'lar.</span></div>
+<div class="step"><b>Süreç modelleme</b><span>4 şeritli As-Is ve To-Be, BPMN ile draw.io'da.</span></div>
+<div class="step"><b>Veri analizi</b><span>Python ile 8.000 başvuru, SQLite'ta 10 sorgu, Power BI dashboard'u.</span></div>
+<div class="step"><b>Gereksinimler</b><span>BRD, izlenebilirlik tablosu, Jira'da backlog ve Sprint 1.</span></div>
+</div>
+</div></section>
+
+<section class="band" id="arastirma" style="background:var(--panel)"><div class="wrap two">
+<div>
+<h2>Şikayetler formda değil, kararda ve sonrasında</h2>
+<p>Başta sorunun form ve gelir belgesi adımında olduğunu varsaymıştım. Şikayetler bunu desteklemedi: en sık iki sorun, onaylanan kredinin hesaba geçmemesi ve reddin nedeninin açıklanmaması.</p>
+<p>Formdan vazgeçen müşteri genelde şikayet yazmaz. Bu yüzden form kaybını ayrıca veriyle ölçtüm.</p>
+<p class="note">Şikayet sayısı. Kaynak: Şikayetvar 41, Google Play 3 kayıt, Kasım 2026. Temsil edici değildir; tekrar eden temaları gösterir.</p>
+</div>
+<div id="complaints"></div>
+</div></section>
+
+<section class="band" id="surec"><div class="wrap">
+<h2>Taslak süreç onayda bitiyordu; araştırmadan sonra iki adım ekledim</h2>
+<p>İlk As-Is şeması “Onay ya da red” kutusunda bitiyordu. Bulgulardan sonra sözleşme onayını ve kredinin hesaba aktarımını sürecin parçası olarak çizdim, darboğazları şikayet sayılarıyla işaretledim.</p>
+<div class="scroll"><table>
+<thead><tr><th>Kod</th><th>Darboğaz</th><th>Süreçteki yeri</th><th class="n">Şikayet</th></tr></thead>
+<tbody>
+<tr><td>D5</td><td>Onaylanan kredi hesaba geçmiyor</td><td>Sözleşme ve aktarım (yeni adım)</td><td class="n">12</td></tr>
+<tr><td>D6</td><td>Red gerekçesi açıklanmıyor</td><td>Karar sonrası (yeni yol)</td><td class="n">9</td></tr>
+<tr><td>D3</td><td>Manuel incelemede bekleme, durum bilgisi yok</td><td>Kredi tahsis</td><td class="n">4</td></tr>
+<tr><td>D1</td><td>Bilgiler elle giriliyor</td><td>Başvuru formu</td><td class="n">1</td></tr>
+<tr><td>D2</td><td>Gelir belgesi isteniyor</td><td>Başvuru formu</td><td class="n">1</td></tr>
+<tr><td>D4</td><td>Eksik belge döngüsü</td><td>Manuel inceleme</td><td class="n">0</td></tr>
+</tbody></table></div>
+</div></section>
+
+<section class="band" id="veri" style="background:var(--panel)"><div class="wrap two">
+<div>
+<h2>Veri, şikayetlerin göremediği kaybı gösteriyor</h2>
+<p>Başvuruların %36'sı gönderilmeden kayboluyor. Gelir belgesi istendiğinde 45 yaş üstünde bırakma %38'e çıkıyor. Manuel incelemeye düşen dosyalar ortalama 29 saat bekliyor; eksik belge çıkarsa 60 saat.</p>
+<p>Onaylanıp iptal edilen 64 kredi 5,4 milyon TL'lik kaçırılmış hacim demek. Reddedilenlerin %28'i bir hafta içinde yeniden başvuruyor.</p>
+<p class="note">Veri sentetiktir; oranları araştırma bulgularına göre ben belirledim. Değerlendirilen şey, gerçek veride aynı soruları SQL ile sorabilmek.</p>
+</div>
+<div class="scroll"><table>
+<thead><tr><th>Gelir belgesi istendiğinde</th><th class="n">Bırakma</th></tr></thead>
+<tbody><tr><td>18-29 yaş</td><td class="n">%21,0</td></tr><tr><td>30-44 yaş</td><td class="n">%26,9</td></tr><tr><td>45 yaş ve üstü</td><td class="n">%37,6</td></tr></tbody>
+</table>
+<table style="margin-top:20px">
+<thead><tr><th>Manuel inceleme</th><th class="n">Ortalama süre</th></tr></thead>
+<tbody><tr><td>Eksik belge yok</td><td class="n">16,7 saat</td></tr><tr><td>Eksik belge var</td><td class="n">60,3 saat</td></tr></tbody>
+</table></div>
+</div></section>
+
+<section class="band" id="cozum"><div class="wrap">
+<h2>Her darboğaza bir çözüm, her çözüme bir gereksinim ve story</h2>
+<div class="scroll"><table>
+<thead><tr><th>Darboğaz</th><th>To-Be çözümü</th><th>Gereksinim</th><th>Story</th></tr></thead>
+<tbody>
+<tr><td>D1 Elle form</td><td>Bilgiler banka kayıtlarından önceden dolu gelir</td><td>FR-03</td><td>US-03</td></tr>
+<tr><td>D2 Gelir belgesi</td><td>Gelir bilgisi açık rızayla dijital alınır; belge yalnızca yedek</td><td>FR-04, FR-05</td><td>US-04, US-05</td></tr>
+<tr><td>D3 Bekleme</td><td>SLA'lı iş kuyruğu (hedef 4 iş saati), durum takibi ve bildirim</td><td>FR-06–08</td><td>US-06–10</td></tr>
+<tr><td>D4 Eksik belge</td><td>Belge uygulama içinden istenir ve yüklenir</td><td>FR-09</td><td>US-11</td></tr>
+<tr><td>D5 Aktarım</td><td>Otomatik yeniden deneme, müşteriye durum ve destek, ekibe bildirim</td><td>FR-11</td><td>US-14–16</td></tr>
+<tr><td>D6 Gerekçesiz red</td><td>Genel red nedeni ve önerilen tekrar başvuru süresi</td><td>FR-12</td><td>US-17, US-18</td></tr>
+<tr><td>Uyuşmayan limit</td><td>Ön onaylı limit karar motoruyla eşleştirilir</td><td>FR-01, FR-13</td><td>US-01, US-19</td></tr>
+</tbody></table></div>
+<p class="note">20 story MoSCoW ile önceliklendirildi: 11 Must, 6 Should, 3 Could. Sprint 1'e uçtan uca çalışan ilk başvuruyu oluşturan 9 story alındı; en sık şikayet edilen aktarım sorunu (D5) bu sprintte.</p>
+</div></section>
+
+<section class="band" id="etki" style="background:var(--panel)"><div class="wrap">
+<h2>Başarı altı KPI ile ölçülecek</h2>
+<div class="scroll"><table>
+<thead><tr><th>KPI</th><th class="n">As-Is</th><th class="n">Hedef</th></tr></thead>
+<tbody>
+<tr><td>Başvuru tamamlama oranı (mobil)</td><td class="n">%64,0</td><td class="n">%75</td></tr>
+<tr><td>Otomatik karar oranı</td><td class="n">%75,4</td><td class="n">%85</td></tr>
+<tr><td>Manuel incelemede ortalama süre</td><td class="n">29,1 saat</td><td class="n">4 iş saati</td></tr>
+<tr><td>Onaylanıp kullandırılamayan ya da geciken kredi</td><td class="n">%3,6</td><td class="n">%1'in altı</td></tr>
+<tr><td>Başlayan başvurudan kullandırılan krediye</td><td class="n">%42,7</td><td class="n">%52</td></tr>
+<tr><td>Red sonrası 7 gün içinde tekrar başvuru</td><td class="n">%28,4</td><td class="n">%15</td></tr>
+</tbody></table></div>
+<p class="note">As-Is değerleri mobil kanal, sentetik veri. Hedefler varsayımsaldır.</p>
+</div></section>
+
+<section class="band" id="ogrenim"><div class="wrap">
+<h2>Öğrendiklerim</h2>
+<div class="lessons">
+<div><b>Varsayımı kanıtla sına</b>Sorunun formda olduğunu düşünüyordum; şikayetler onaydan sonrasını gösterdi ve süreci yeniden çizdim.</div>
+<div><b>Kaynağın yanlılığını hesaba kat</b>Şikayet siteleri sessizce vazgeçenleri göstermez. Bu boşluğu veri analiziyle kapattım.</div>
+<div><b>Önceliği kanıt belirlesin</b>En sık şikayet edilen sorun ilk sprinte girdi; bağımlı iki story birlikte Sprint 2'ye kaldı.</div>
+</div>
+</div></section>
+
+<section class="band" id="ciktilar" style="background:var(--panel)"><div class="wrap">
+<h2>Çıktılar</h2>
+<div class="out">
+<div><b>Proje dokümanı ve BRD</b><span>Proje tanımı, araştırma özeti, veri analizi, BRD ve izlenebilirlik</span></div>
+<div><b>Etiketleme tablosu</b><span>44 kayıt, kaynak linkleriyle</span></div>
+<div><b>BPMN şemaları</b><span>As-Is ve To-Be, draw.io</span></div>
+<div><b>SQL ve veri seti</b><span>analiz.sql, kredi_basvuru.db, veri üretici</span></div>
+<div><b>Power BI dashboard'u</b><span>Huni, yaş grubu, aylık trend, onay sonrası durum</span></div>
+<div><b>Wireframe'ler</b><span>6 mobil ekran ve tahsis iş kuyruğu</span></div>
+<div><b>Jira backlog'u</b><span>1 epic, 20 story, Sprint 1</span></div>
+<div><b>Sunum</b><span>10 slayt</span></div>
+</div>
+</div></section>
+</main>
+
+<footer class="band"><div class="wrap">Ebrar Topal · Kurgusal banka ve sentetik veriyle hazırlanmış kişisel portföy projesidir; araştırmadaki şikayetler herkese açık kaynaklardandır.</div></footer>
+
+<script>
+{
+const funnel=[["Başladı",8000],["Ekran açıldı",7875],["Tutar ve vade geçildi",6757],["Bilgi girişi geçildi",6068],["Gönderildi",5127],["Onaylandı",3589],["Kullandırıldı",3386]];
+const max=funnel[0][1];
+const fmt=n=>n.toLocaleString('tr-TR');
+document.getElementById('funnel').innerHTML=funnel.map(([l,v],i)=>`<div class="frow"><span>${l}</span><div class="ftrack"><div class="fbar${i===funnel.length-1?' hot':''}" style="width:${(v/max*100).toFixed(1)}%"></div></div><span class="fval">${fmt(v)} · %${Math.round(v/max*100)}</span></div>`).join('');
+const comp=[["D5 Onaylanan kredi hesaba geçmiyor",12,1],["D6 Red gerekçesi açıklanmıyor",9,1],["Başvuru ekranı açılmıyor",7,0],["D3 Manuel incelemede bekleme",4,0],["Gösterilen limit uyuşmuyor",3,0],["D1 Form elle dolduruluyor",1,0],["D2 Gelir belgesi isteniyor",1,0],["D4 Eksik belge döngüsü",0,0]];
+const cmax=12;
+document.getElementById('complaints').innerHTML=comp.map(([l,v,h])=>`<div class="crow"><span>${l}</span><div class="ctrack"><div class="cbar${h?' hot':''}" style="width:${Math.max(v/cmax*100,0.6).toFixed(1)}%"></div></div><span class="cval">${v}</span></div>`).join('');
+}
+</script>
+</body>
+</html>

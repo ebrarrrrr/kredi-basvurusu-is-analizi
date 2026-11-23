@@ -1,0 +1,138 @@
+Summary,Issue Type,Description,Labels,Labels,Labels
+US-01 Ön onaylı limiti görme,Story,"Bir mevcut banka müşterisi olarak, başvuruya başlamadan ne kadar kredi alabileceğimi görmek istiyorum, böylece boşa başvuru yapmayayım.
+
+Kabul kriterleri:
+- Verilen: Müşterinin geçerli bir ön onaylı limiti var. Eğer: Kredi başvuru ekranını açarsa. O zaman: Limit tutarı ekranın üstünde gösterilir ve tutar seçici bu limiti aşamaz.
+- Verilen: Müşterinin ön onaylı limiti yok. Eğer: Başvuru ekranını açarsa. O zaman: Limit mesajı gösterilmez ve standart akış başlar.
+
+Gereksinim: FR-01 FR-13",must,Limit,FR-01
+US-02 Taksit hesaplayıcı,Story,"Bir başvuru sahibi olarak, tutar ve vadeyi değiştirdikçe aylık taksiti ve toplam geri ödemeyi görmek istiyorum, böylece bütçeme uygun krediyi seçebileyim.
+
+Kabul kriterleri:
+- Eğer: Müşteri tutar veya vadeyi değiştirirse. O zaman: Aylık taksit, faiz oranı ve toplam geri ödeme 1 saniye içinde güncellenir.
+- O zaman: Gösterilen tutarlar sözleşme öncesi bilgi formundakilerle aynıdır.
+
+Gereksinim: FR-02",must,Mevzuat,FR-02
+US-03 Önceden doldurulmuş başvuru formu,Story,"Bir mevcut müşteri olarak, bankanın zaten bildiği bilgilerimi tekrar yazmamak istiyorum, böylece başvuruyu birkaç dakikada bitireyim.
+
+Kabul kriterleri:
+- Verilen: Müşterinin kimlik, adres ve iletişim bilgileri bankada kayıtlı. Eğer: Bilgi adımını açarsa. O zaman: Alanlar dolu gelir ve müşteri yalnızca onaylar ya da düzeltir.
+- Eğer: Müşteri bir alanı değiştirirse. O zaman: Değişiklik başvuruya kaydedilir ve denetim kaydına yazılır.
+
+Gereksinim: FR-03",must,D1,FR-03
+US-04 Gelir bilgisinin açık rızayla dijital alınması,Story,"Bir başvuru sahibi olarak, gelir belgemi aramak yerine bilgimin tek onayla alınmasını istiyorum, böylece belge adımında takılmayayım.
+
+Kabul kriterleri:
+- Verilen: Müşteri gelir adımında. Eğer: Aydınlatma metnini görüp açık rıza verirse. O zaman: Gelir bilgisi otomatik alınır ve rıza tarih ve saatiyle kaydedilir.
+- Eğer: Müşteri rıza vermezse. O zaman: Belge yükleme seçeneği gösterilir (US-05).
+
+Gereksinim: FR-04",must,D2,FR-04
+US-05 Gelir belgesi yükleme alternatifi,Story,"Bir başvuru sahibi olarak, gelir bilgim dijital alınamadığında belgemi uygulamadan yüklemek istiyorum, böylece başvurum yarıda kalmasın.
+
+Kabul kriterleri:
+- Eğer: Gelir bilgisi dijital alınamazsa. O zaman: PDF veya fotoğraf yükleme seçeneği çıkar.
+- Eğer: Dosya okunamıyorsa. O zaman: Müşteriye hangi belgenin, hangi formatta gerektiği açıkça yazılır.
+
+Gereksinim: FR-05",should,D2,FR-05
+US-06 Anlık otomatik karar,Story,"Bir başvuru sahibi olarak, başvurumun sonucunu hemen öğrenmek istiyorum, böylece beklemeden plan yapabileyim.
+
+Kabul kriterleri:
+- Eğer: Başvuru gönderilirse. O zaman: Karar motoru sonucu otomatik onay, otomatik red veya manuel inceleme olarak sınıflandırır.
+- O zaman: Otomatik kararlar 60 saniye içinde ekranda gösterilir (NFR-01).
+
+Gereksinim: FR-06",must,D3,FR-06
+US-07 Tahsis uzmanı için SLA'lı iş kuyruğu,Story,"Bir kredi tahsis uzmanı olarak, manuel incelemeye düşen dosyaları kalan süreleriyle tek listede görmek istiyorum, böylece öncelikli dosyaya önce bakabileyim.
+
+Kabul kriterleri:
+- Eğer: Bir başvuru manuel incelemeye düşerse. O zaman: Kuyruğa SLA bitiş zamanıyla eklenir.
+- O zaman: Liste kalan süreye göre sıralanır ve ürün tipi, tutar ve şubeye göre filtrelenebilir.
+
+Gereksinim: FR-07",must,D3,FR-07
+US-08 SLA aşım uyarısı,Story,"Bir tahsis ekip lideri olarak, süresi dolmak üzere olan dosyalardan haberdar olmak istiyorum, böylece müşteriyi bekletmeyelim.
+
+Kabul kriterleri:
+- Eğer: Bir dosyanın SLA süresinin %80'i dolarsa. O zaman: Dosya kuyrukta vurgulanır ve ekip liderine bildirim gider.
+
+Gereksinim: FR-07",should,D3,FR-07
+US-09 Başvuru durum takibi,Story,"Bir başvuru sahibi olarak, başvurumun hangi aşamada olduğunu uygulamada görmek istiyorum, böylece bankayı aramak zorunda kalmayayım.
+
+Kabul kriterleri:
+- Verilen: Başvuru manuel incelemede. Eğer: Müşteri durum ekranını açarsa. O zaman: İnceleniyor durumu ve tahmini sonuç zamanı görünür.
+- O zaman: Aşama çubuğu gönderildi, inceleniyor, karar ve hesaba aktarım adımlarını gösterir.
+
+Gereksinim: FR-08",must,D3,FR-08
+US-10 Durum değişikliği bildirimi,Story,"Bir başvuru sahibi olarak, başvurumun durumu değiştiğinde bildirim almak istiyorum, böylece uygulamayı sürekli kontrol etmeyeyim.
+
+Kabul kriterleri:
+- Eğer: Başvurunun durumu değişirse. O zaman: Müşteriye push bildirimi, kapalıysa SMS gönderilir.
+
+Gereksinim: FR-08",should,D3,FR-08
+US-11 Uygulama içinden eksik belge yükleme,Story,"Bir başvuru sahibi olarak, eksik belge istendiğinde belgeyi doğrudan uygulamadan yüklemek istiyorum, böylece şubeye gitmeyeyim.
+
+Kabul kriterleri:
+- Verilen: Tahsis uzmanı eksik belge istedi. Eğer: Müşteri bildirime dokunursa. O zaman: Hangi belgenin neden istendiğini görür ve tek ekranda yükler.
+- Eğer: Belge yüklenirse. O zaman: Dosya aynı uzmanın kuyruğuna geri döner.
+
+Gereksinim: FR-09",should,D4,FR-09
+US-12 Yarım kalan başvuruya geri dönme,Story,"Bir başvuru sahibi olarak, yarıda bıraktığım başvuruya kaldığım yerden devam etmek istiyorum, böylece baştan başlamayayım.
+
+Kabul kriterleri:
+- Verilen: Müşteri başvuruyu yarıda bıraktı. Eğer: 7 gün içinde geri gelirse. O zaman: Kaldığı adımdan devam eder.
+- Eğer: 24 saat içinde dönmezse. O zaman: Tek bir hatırlatma bildirimi gönderilir.
+
+Gereksinim: FR-10",could,Veri,FR-10
+US-13 Sözleşmenin dijital onayı,Story,"Bir onay almış müşteri olarak, sözleşme öncesi bilgi formunu okuyup sözleşmeyi uygulamadan onaylamak istiyorum, böylece şubeye gitmeden krediyi kullanayım.
+
+Kabul kriterleri:
+- Eğer: Kredi onaylanırsa. O zaman: Sözleşme öncesi bilgi formu ve sözleşme metni gösterilir.
+- Eğer: Müşteri onaylarsa. O zaman: Onay zaman damgasıyla kaydedilir ve sözleşmenin bir kopyası müşteriye gönderilir.
+
+Gereksinim: FR-14",must,Mevzuat,FR-14
+US-14 Aktarımda otomatik yeniden deneme,Story,"Bir onay almış müşteri olarak, aktarım hatası olduğunda işlemin otomatik tekrar denenmesini istiyorum, böylece kredim iptal olmasın.
+
+Kabul kriterleri:
+- Eğer: Hesaba aktarım başarısız olursa. O zaman: Sistem işlemi belirlenen aralıklarla otomatik yeniden dener.
+- Eğer: Yeniden denemeler de başarısız olursa. O zaman: Kredi iptal edilmez; dosya operasyon kuyruğuna düşer (US-16).
+
+Gereksinim: FR-11",must,D5,FR-11
+US-15 Aktarım hatasında müşteriye durum ve destek,Story,"Bir onay almış müşteri olarak, param hesaba geçmediğinde ne olduğunu ve ne yapabileceğimi görmek istiyorum, böylece endişelenip krediyi iptal etmeyeyim.
+
+Kabul kriterleri:
+- Eğer: Aktarım gecikirse. O zaman: Ekranda 'Aktarım sürüyor' mesajı ve tahmini süre görünür.
+- O zaman: Ekranda yalnızca 'İptal' değil, 'Destek al' seçeneği de bulunur.
+
+Gereksinim: FR-11",must,D5,FR-11
+US-16 Operasyon ekibine aktarım hatası bildirimi,Story,"Bir operasyon uzmanı olarak, otomatik denemelere rağmen aktarılamayan kredileri görmek istiyorum, böylece müşteri şikayet etmeden çözeyim.
+
+Kabul kriterleri:
+- Eğer: Otomatik yeniden denemeler başarısız olursa. O zaman: Dosya hata nedeniyle birlikte operasyon kuyruğuna eklenir ve ekibe bildirim gider.
+
+Gereksinim: FR-11",should,D5,FR-11
+US-17 Red nedeni kategorisi,Story,"Reddedilen bir başvuru sahibi olarak, başvurumun neden reddedildiğini genel olarak öğrenmek istiyorum, böylece durumumu iyileştirebileyim.
+
+Kabul kriterleri:
+- Eğer: Başvuru reddedilirse. O zaman: Ekranda genel bir red kategorisi gösterilir (örnek: gelir-borç dengesi, kredi geçmişi).
+- O zaman: Skor modelinin ayrıntısı gösterilmez ve metin uyum ekibince onaylanmış şablondan gelir.
+
+Gereksinim: FR-12",should,D6,FR-12
+US-18 Tekrar başvuru için önerilen süre,Story,"Reddedilen bir başvuru sahibi olarak, ne zaman tekrar başvurmanın mantıklı olduğunu bilmek istiyorum, böylece boşuna başvurup kredi notumu etkilemeyeyim.
+
+Kabul kriterleri:
+- Eğer: Başvuru reddedilirse. O zaman: Ekranda önerilen bekleme süresi gösterilir.
+- Eğer: Müşteri bu süreden önce tekrar başvurmaya çalışırsa. O zaman: Bir uyarı gösterilir ama başvuru engellenmez.
+
+Gereksinim: FR-12",could,D6,FR-12
+US-19 Ön onaylı limitin karar motoruyla eşleşmesi,Story,"Bir ürün sahibi olarak, uygulamada gösterilen limitin gerçek kararla uyumlu olmasını istiyorum, böylece müşteriler yanıltıldıklarını düşünmesin.
+
+Kabul kriterleri:
+- Eğer: Müşterinin risk durumu değişirse. O zaman: Ön onaylı limit en geç 24 saat içinde yeniden hesaplanır.
+- Eğer: Limit geçersiz hale gelirse. O zaman: Uygulamada gösterilmez.
+
+Gereksinim: FR-13",must,Limit,FR-13
+US-20 Günlük başvuru hunisi raporu,Story,"Bir dijital kanal yöneticisi olarak, başvuru hunisini ve KPI'ları günlük görmek istiyorum, böylece iyileştirmelerin etkisini ölçebileyim.
+
+Kabul kriterleri:
+- O zaman: Rapor tamamlama oranı, otomatik karar oranı, manuel inceleme süresi, kullandırılamayan kredi oranı ve uçtan uca dönüşümü gösterir.
+- O zaman: Rapor kanal ve yaş grubuna göre filtrelenebilir.
+
+Gereksinim: KPI",could,KPI,KPI
